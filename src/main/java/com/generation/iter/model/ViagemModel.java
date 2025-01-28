@@ -43,6 +43,17 @@ public class ViagemModel {
 	@JsonIgnoreProperties("viagem")
 	private UsuarioModel usuario;
 	
+	private Double tempoViagem;
+	
+	
+	public Double getTempoViagem() {
+		return tempoViagem;
+	}
+
+	public void setTempoViagem(Double tempoViagem) {
+		this.tempoViagem = tempoViagem;
+	}
+
 	public Long getId() {
 		return id;
 	}

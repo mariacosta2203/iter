@@ -22,6 +22,7 @@ import com.generation.iter.model.ViagemModel;
 import com.generation.iter.repository.UsuarioRepository;
 import com.generation.iter.repository.VeiculoRepository;
 import com.generation.iter.repository.ViagemRepository;
+import com.generation.iter.service.ViagemService;
 
 import jakarta.validation.Valid;
 
@@ -32,6 +33,9 @@ public class ViagemController {
 
 	@Autowired
 	private ViagemRepository viagemRepository;
+	
+	@Autowired
+	private ViagemService viagemService;
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -62,10 +66,13 @@ public class ViagemController {
 	@PostMapping("/criar")
 	public ResponseEntity<ViagemModel> post(@Valid @RequestBody ViagemModel viagem)
 	{
-		if(veiculoRepository.existsById(viagem.getVeiculo().getId()) && usuarioRepository.existsById(viagem.getUsuario().getId()))
+		if(veiculoRepository.existsById(viagem.getVeiculo().getId()) && usuarioRepository.existsById(viagem.getUsuario().getId())) {
+			
+			viagemService.calcularTempoViagem(viagem);
+			
 			return ResponseEntity.status(HttpStatus.CREATED)
 					.body(viagemRepository.save(viagem));		
-		
+		}
 		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Veículo não existe!", null);
 	}
 	
