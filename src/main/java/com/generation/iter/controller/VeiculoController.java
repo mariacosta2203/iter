@@ -31,30 +31,30 @@ public class VeiculoController {
 	@Autowired
 	private VeiculoRepository veiculoRepository;
 	
-	@GetMapping
+	@GetMapping("/all")
 	public ResponseEntity<List<VeiculoModel>> getAll(){
 		return ResponseEntity.ok(veiculoRepository.findAll());
 	}
 	
-	@GetMapping("/veiculo/{id}")
+	@GetMapping("/id/{id}")
 	public ResponseEntity<VeiculoModel> getById(@PathVariable Long id) {
 		return veiculoRepository.findById(id)
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
-	@GetMapping("/veiculo/{modelo}")
-	public ResponseEntity<List<VeiculoModel>> getByTitle(@PathVariable String modelo){
+	@GetMapping("/modelo/{modelo}")
+	public ResponseEntity<List<VeiculoModel>> getByModelo(@PathVariable String modelo){
 		return ResponseEntity.ok(veiculoRepository.findAllByModeloContainingIgnoreCase(modelo));
 	}
 	
-	@PostMapping
+	@PostMapping("/criar")
 	public ResponseEntity<VeiculoModel> post(@Valid @RequestBody VeiculoModel veiculo){
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(veiculoRepository.save(veiculo));
 	}
 	
-	@PutMapping
+	@PutMapping("/atualizar")
 	public ResponseEntity<VeiculoModel> put(@Valid @RequestBody VeiculoModel veiculo){
 		return veiculoRepository.findById(veiculo.getId())
 				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED)
@@ -63,7 +63,7 @@ public class VeiculoController {
 	}
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@DeleteMapping("veiculo/{id}")
+	@DeleteMapping("/deletar/{id}")
 	public void delete(@PathVariable Long id) {
 		Optional<VeiculoModel> veiculo = veiculoRepository.findById(id);
 		

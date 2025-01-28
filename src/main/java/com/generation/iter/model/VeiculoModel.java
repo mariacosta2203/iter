@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "tb temas")
+@Table(name = "tb_veiculo")
 public class VeiculoModel {
 
 	@Id
@@ -41,8 +41,8 @@ public class VeiculoModel {
 	@Size(min = 5, max = 50, message = "O atributo deve conter no mínimo 5 e no máximo 50 caracteres")
 	private String motorista;
 	
-/*	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tema", cascade = CascadeType.REMOVE)
-	private List<Viagem> viagem;  */
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "veiculo", cascade = CascadeType.REMOVE)
+	private List<ViagemModel> viagem;  
 
 	public Long getId() {
 		return id;
@@ -92,13 +92,13 @@ public class VeiculoModel {
 		this.motorista = motorista;
 	}
 
-/*	public List<Viagem> getViagem() {
+	public List<ViagemModel> getViagem() {
 		return viagem;
 	}
 
-	public void setViagem(List<Viagem> viagem) {
+	public void setViagem(List<ViagemModel> viagem) {
 		this.viagem = viagem;
-	} */
+	} 
 	
 	
 	

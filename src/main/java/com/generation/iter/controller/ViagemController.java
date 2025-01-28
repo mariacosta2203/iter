@@ -26,7 +26,7 @@ import com.generation.iter.repository.ViagemRepository;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/viagens")
+@RequestMapping("/viagem")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ViagemController {
 
