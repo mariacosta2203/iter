@@ -36,14 +36,14 @@ public class VeiculoController {
 		return ResponseEntity.ok(veiculoRepository.findAll());
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/veiculo/{id}")
 	public ResponseEntity<VeiculoModel> getById(@PathVariable Long id) {
 		return veiculoRepository.findById(id)
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
-	@GetMapping("/descricao/{descricao}")
+	@GetMapping("/veiculo/{modelo}")
 	public ResponseEntity<List<VeiculoModel>> getByTitle(@PathVariable String modelo){
 		return ResponseEntity.ok(veiculoRepository.findAllByModeloContainingIgnoreCase(modelo));
 	}
@@ -63,7 +63,7 @@ public class VeiculoController {
 	}
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@DeleteMapping("/{id}")
+	@DeleteMapping("veiculo/{id}")
 	public void delete(@PathVariable Long id) {
 		Optional<VeiculoModel> veiculo = veiculoRepository.findById(id);
 		
