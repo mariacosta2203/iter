@@ -43,14 +43,14 @@ public class ViagemModel {
 	@JsonIgnoreProperties("viagem")
 	private UsuarioModel usuario;
 	
-	private Double tempoViagem;
+	private String tempoViagem;
 	
 	
-	public Double getTempoViagem() {
+	public String getTempoViagem() {
 		return tempoViagem;
 	}
 
-	public void setTempoViagem(Double tempoViagem) {
+	public void setTempoViagem(String tempoViagem) {
 		this.tempoViagem = tempoViagem;
 	}
 
