@@ -27,16 +27,11 @@ public class SwaggerConfig {
 	                    .url("https://brazil.generation.org/"))
 	                .contact(new Contact()
 	                    .name("Grupo 03 - Turma 79")
-	                    .url("https://github.com/mariacosta2203/iter.git")
-	                    .email("Adelina Santos / adevitoria.m09@gmail.com "
-	                    		+ " Maria Oliveira / maria.oliveiracosta13@gmaill.com"
-	                    		+ "Beatriz Borges / bia4sb4@gmail.com "
-	                    		+ "Otavio Ferreira / otavinhosilva321@gmail.com"
-	                    		+ "Denner dos Anjos denner.a.moura.s@gmail.com"
-	                    		+ "Lucas Pimentel - lucaspimentel760@gmail.com")))
+	                    .url("https://github.com/Projeto-Integrador-Grupo-03-Turma79")
+	                    .email("grupo03turma79@gmail.com")))
 	            .externalDocs(new ExternalDocumentation()
 	                .description("Github")
-	                .url("https://github.com/mariacosta2203/iter.git"));
+	                .url("https://github.com/Projeto-Integrador-Grupo-03-Turma79"));
 	    }
 	    
 	    @Bean
